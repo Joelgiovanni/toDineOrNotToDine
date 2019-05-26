@@ -1,0 +1,8 @@
+@import url('https://fonts.googleapis.com/css?family=Playfair+Display&display=swap');
+
+.nav-item {
+  margin-left: 2%;
+  font-family: 'Playfair Display', italic;
+  font-size: 42px;
+  margin-top: 10px;
+}
