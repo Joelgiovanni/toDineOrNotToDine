@@ -5,12 +5,8 @@ import Main from './components/layout/Main';
 import Footer from './components/layout/Footer';
 
 function App() {
-  return (
-    <div className='app'>
-      <Navbar />
-      <Landing />
-    </div>
-  );
+  return <div className='app'>{/* <Navbar />
+      <Landing /> */}</div>;
 }
 
 export default App;
