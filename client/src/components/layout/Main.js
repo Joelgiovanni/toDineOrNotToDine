@@ -1,19 +1,40 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Geolocation from '@react-native-community/geolocation';
 
 class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      restaurant: ''
+      restaurant: '',
+      location: ''
     };
   }
 
   componentDidMount() {
+    navigator.geolocation.getCurrentPosition(
+      position => {
+        let lat = position.coords.latitude;
+        let lng = position.coords.longitude;
+        console.log('getCurrentPosition Success ' + lat + lng); // logs position correctly
+        this.setState({
+          location: {
+            lat: lat,
+            lng: lng
+          }
+        });
+      },
+      error => {
+        this.props.displayError('Error dectecting your location');
+        console.error(JSON.stringify(error));
+      },
+      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
+    );
+
     // Make the API call on page load
     axios
       .get(
-        'https://developers.zomato.com/api/v2.1/geocode?lat=39.7692802&lon=-105.0640723',
+        `https://developers.zomato.com/api/v2.1/geocode?lat=39.6924553&lon=-105.0256318`,
         {
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
@@ -46,6 +67,7 @@ class Main extends Component {
 
         this.setState({ restaurant: finalResult });
         console.log(this.state.restaurant);
+        console.log(this.state.location);
       })
       .catch(err => console.log(err));
   }
@@ -55,7 +77,14 @@ class Main extends Component {
         <h1>Restaurant:{this.state.restaurant.name}</h1>
         <p>Rating: {this.state.restaurant.rating}</p>
         <p>Address: {this.state.restaurant.address}</p>
-        <p>Delivery: {this.state.restaurant.delivery}</p>
+        <p>
+          Delivery:{' '}
+          {this.state.restaurant.delivery === 0 ? (
+            <span> This location does not deliver </span>
+          ) : (
+            <span> This location offers delivery </span>
+          )}
+        </p>
         <p>Style: {this.state.restaurant.typeOfFood}</p>
       </div>
     );
