@@ -17,22 +17,22 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // });
 
 app.get('/', (req, res) => {
-  // axios
-  //   .get(
-  //     'https://developers.zomato.com/api/v2.1/geocode?lat=39.7692802&lon=-105.0640723',
-  //     {
-  //       headers: {
-  //         'Content-Type': 'application/x-www-form-urlencoded',
-  //         Accept: 'application/json',
-  //         'user-key': '1062f6965a8e3100b4d2f44709cb9bc4'
-  //       }
-  //     }
-  //   )
-  //   .then(res => {
-  //     const name = res.data.nearby_restaurants[0].restaurant.name;
-  //     console.log(name);
-  //   })
-  //   .catch(err => console.log(err));
+  axios
+    .get(
+      'https://developers.zomato.com/api/v2.1/geocode?lat=39.7692802&lon=-105.0640723',
+      {
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+          Accept: 'application/json',
+          'user-key': '1062f6965a8e3100b4d2f44709cb9bc4'
+        }
+      }
+    )
+    .then(res => {
+      const name = res.data.nearby_restaurants[0].restaurant.name;
+      console.log(name);
+    })
+    .catch(err => console.log(err));
 });
 
 const port = 5000;

@@ -5,11 +5,12 @@ class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      restaurants: []
+      restaurants: ''
     };
   }
 
   componentDidMount() {
+    // Make the API call on page load
     axios
       .get(
         'https://developers.zomato.com/api/v2.1/geocode?lat=39.7692802&lon=-105.0640723',
@@ -22,35 +23,37 @@ class Main extends Component {
         }
       )
       .then(res => {
-        // const restaurant = {
-        //   name: res.data.nearby_restaurants[0].restaurant.name,
-        //   style: res.data.nearby_restaurants[0].restaurant.cuisines,
-        //   rating:
-        //     res.data.nearby_restaurants[0].restaurant.user_rating
-        //       .aggregate_rating,
-        //   ratingColor:
-        //     res.data.nearby_restaurants[0].restaurant.user_rating.rating_color
-        // };
-        var restaurants = res.data.nearby_restaurants;
+        const restaurantsNearMe = res.data.nearby_restaurants;
 
-        restaurants.forEach(function(restaurant) {
-          const filteredResults = {
-            name: restaurant.restaurant.name,
-            style: restaurant.restaurant.cuisines,
-            rating: restaurant.restaurant.user_rating.aggregate_rating,
-            ratingColor: restaurant.restaurant.user_rating.rating_color
-          };
-          console.log(filteredResults);
-        });
+        this.setState({ restaurants: restaurantsNearMe });
+
+        var random = this.state.restaurants[
+          Math.floor(Math.random() * this.state.restaurants.length)
+        ];
+
+        console.log(random);
+
+        // Filter out only the data that we want before saving into state
+        // restaurantsNearMe.forEach(restaurant => {
+        //   const filteredResults = {
+        //     name: restaurant.restaurant.name,
+        //     id: restaurant.restaurant.id,
+        //     rating: restaurant.restaurant.user_rating.aggregate_rating,
+        //     ratingColor: restaurant.restaurant.user_rating.rating_color,
+        //     address: restaurant.restaurant.location.address,
+        //     delivery: restaurant.restaurant.is_delivering_now
+        //   };
+
+        // Save filtered data into state
+        //   this.setState({ restaurants: filteredResults });
+
+        //   console.log(this.state.restaurants);
+        // });
       })
       .catch(err => console.log(err));
   }
   render() {
-    return (
-      <div>
-        <h3>App</h3>
-      </div>
-    );
+    return <div>||</div>;
   }
 }
 
