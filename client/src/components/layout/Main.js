@@ -5,7 +5,7 @@ class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      restaurants: ''
+      restaurant: ''
     };
   }
 
@@ -27,33 +27,38 @@ class Main extends Component {
 
         this.setState({ restaurants: restaurantsNearMe });
 
-        var random = this.state.restaurants[
-          Math.floor(Math.random() * this.state.restaurants.length)
-        ];
+        // Pick out a random retaurant from what the API returns
+        var randomRestaurant =
+          restaurantsNearMe[
+            Math.floor(Math.random() * restaurantsNearMe.length)
+          ];
 
-        console.log(random);
+        // Select only the data that you want
+        var finalResult = {
+          name: randomRestaurant.restaurant.name,
+          id: randomRestaurant.restaurant.id,
+          rating: randomRestaurant.restaurant.user_rating.aggregate_rating,
+          ratingColor: randomRestaurant.restaurant.user_rating.rating_color,
+          address: randomRestaurant.restaurant.location.address,
+          delivery: randomRestaurant.restaurant.is_delivering_now,
+          typeOfFood: randomRestaurant.restaurant.cuisines
+        };
 
-        // Filter out only the data that we want before saving into state
-        // restaurantsNearMe.forEach(restaurant => {
-        //   const filteredResults = {
-        //     name: restaurant.restaurant.name,
-        //     id: restaurant.restaurant.id,
-        //     rating: restaurant.restaurant.user_rating.aggregate_rating,
-        //     ratingColor: restaurant.restaurant.user_rating.rating_color,
-        //     address: restaurant.restaurant.location.address,
-        //     delivery: restaurant.restaurant.is_delivering_now
-        //   };
-
-        // Save filtered data into state
-        //   this.setState({ restaurants: filteredResults });
-
-        //   console.log(this.state.restaurants);
-        // });
+        this.setState({ restaurant: finalResult });
+        console.log(this.state.restaurant);
       })
       .catch(err => console.log(err));
   }
   render() {
-    return <div>||</div>;
+    return (
+      <div>
+        <h1>Restaurant:{this.state.restaurant.name}</h1>
+        <p>Rating: {this.state.restaurant.rating}</p>
+        <p>Address: {this.state.restaurant.address}</p>
+        <p>Delivery: {this.state.restaurant.delivery}</p>
+        <p>Style: {this.state.restaurant.typeOfFood}</p>
+      </div>
+    );
   }
 }
 
