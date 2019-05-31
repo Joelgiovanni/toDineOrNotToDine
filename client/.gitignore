@@ -7,7 +7,7 @@
 
 # testing
 /coverage
-Keys.js
+
 
 # production
 /build
@@ -22,3 +22,5 @@ Keys.js
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+/config
