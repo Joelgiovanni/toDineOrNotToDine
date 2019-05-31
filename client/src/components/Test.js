@@ -3,7 +3,7 @@ import axios from 'axios';
 
 /// HIDE ALL OF YOUR API KEYS BEFORE NEXT COMMIT
 
-class Main extends Component {
+class Test extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -97,4 +97,4 @@ class Main extends Component {
   }
 }
 
-export default Main;
+export default Test;
