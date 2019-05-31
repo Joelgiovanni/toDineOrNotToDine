@@ -1,10 +1,10 @@
 import React from 'react';
-import Test from './components/Test';
+import Main from './components/layout/Main';
 
 function App() {
   return (
     <div className='App'>
-      <Test />
+      <Main />
     </div>
   );
 }
