@@ -5,10 +5,10 @@ class Banner extends Component {
   render() {
     return (
       <div>
-        <div className='parallax '>
-          <h1>YEA</h1>
-        </div>
-        <div className='test'>test</div>
+        <div className='parallax ' />
+        <span className='app-name'>
+          What's Cooking Tonight ? <i class='fas fa-utensils' />
+        </span>
       </div>
     );
   }

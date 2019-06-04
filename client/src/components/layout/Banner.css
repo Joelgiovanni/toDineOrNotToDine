@@ -1,6 +1,13 @@
 .parallax {
   /* The image used */
   background-image: url('../../images/plate2.jpg');
+  opacity: 0.5;
+
+  -webkit-filter: blur(2px);
+  -moz-filter: blur(2px);
+  -o-filter: blur(2px);
+  -ms-filter: blur(2px);
+  filter: blur(2px);
 
   /* Set a specific height */
   height: 700px;
@@ -13,8 +20,19 @@
   background-size: cover;
 }
 
-.test {
-  height: 2000px;
-  background-color: red;
-  font-size: 36px;
+.app-name {
+  /* POSITION */
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+
+  /* STYLE*/
+  border: 1.5px solid white;
+  padding: 30px;
+  font-size: 30px;
+  letter-spacing: 10px;
+  border-top-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
