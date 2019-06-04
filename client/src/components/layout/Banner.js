@@ -7,7 +7,7 @@ class Banner extends Component {
       <div>
         <div className='parallax ' />
         <span className='app-name'>
-          What's Cooking Tonight ? <i class='fas fa-utensils' />
+          What's Cooking Tonight ? <i className='fas fa-utensils' />
         </span>
       </div>
     );

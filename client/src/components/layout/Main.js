@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import './MainContent.css';
 import axios from 'axios';
 const keys = require('../../config/Keys');
 
-class Main extends Component {
+class MainContent extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -96,25 +97,116 @@ class Main extends Component {
       );
     });
   }
-
   render() {
     return (
-      <div>
-        <h1>Restaurant:{this.state.restaurant.name}</h1>
-        <p>Rating: {this.state.restaurant.rating}</p>
-        <p>Address: {this.state.restaurant.address}</p>
-        <p>
-          Delivery:{' '}
-          {this.state.restaurant.delivery === 0 ? (
-            <span> This location does not deliver </span>
-          ) : (
-            <span> This location offers delivery </span>
-          )}
-        </p>
-        <p>Style: {this.state.restaurant.typeOfFood}</p>
+      <div className='container mt-4 content'>
+        <div className='row'>
+          <div className='col'>
+            <h1 className='header'>Our Mission</h1>
+            <p className='mt-4 supporting'>
+              Our end goal is to stop the back and forth arguements about where
+              to eat.{' '}
+              <span style={{ color: 'red' }}>
+                I know everyone knows exactly what we are talking about.
+              </span>
+              Our system will find a nearby restaurant at random and display it
+              for you with a rating, address and the type of food !
+            </p>
+          </div>
+          <div className='col'>
+            <h1 className='header'>Try us out!</h1>
+
+            <p className='mt-4'>
+              Make your life a little easier. <br />
+              Unless you like having the same arguement every single day?
+            </p>
+
+            <div className='mt-4'>
+              <button
+                type='button'
+                className='btn btn-outline-secondary btn-lg'
+                data-toggle='modal'
+                data-target='#exampleModalCenter'
+              >
+                Find Food
+                <i className='fas fa-search ml-2' />
+              </button>
+              <div className='col arrows'>
+                <i className='fas fa-arrow-up' />
+                <i className='fas fa-arrow-up' />
+                <i className='fas fa-arrow-up' />
+                <i className='fas fa-arrow-up' />
+              </div>
+              <div
+                className='modal fade'
+                id='exampleModalCenter'
+                tabindex='-1'
+                role='dialog'
+                aria-labelledby='exampleModalCenterTitle'
+                aria-hidden='true'
+              >
+                <div
+                  className='modal-dialog modal-dialog-centered'
+                  role='document'
+                >
+                  <div className='modal-content'>
+                    <div className='modal-header'>
+                      <h5 className='modal-title' id='exampleModalLongTitle'>
+                        <span>Restaurant: </span>
+                        {this.state.restaurant.name}
+                      </h5>
+                      <button
+                        type='button'
+                        className='close'
+                        data-dismiss='modal'
+                        aria-label='Close'
+                      >
+                        <span aria-hidden='true'>&times;</span>
+                      </button>
+                    </div>
+                    <div className='modal-body'>
+                      <div class='container'>
+                        <div class='row'>
+                          <div class='col'>
+                            <h4>Rating</h4>
+                            <span>{this.state.restaurant.rating}/5</span>
+                          </div>
+                          <div class='col'>
+                            <h4>Address</h4>
+                            <span>{this.state.restaurant.address}</span>
+                          </div>
+                          <div class='col'>
+                            <h4>Delivery</h4>
+                            <span>
+                              {this.state.restaurant.delivery === 0
+                                ? 'Yes'
+                                : 'No'}
+                            </span>
+                          </div>
+                          <div class='col'>
+                            <h4>Style</h4>
+                            {this.state.restaurant.typeOfFood}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className='modal-footer'>
+                      <button
+                        type='button'
+                        className='btn btn-danger'
+                        data-dismiss='modal'
+                      >
+                        Close
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
 }
-
-export default Main;
+export default MainContent;
