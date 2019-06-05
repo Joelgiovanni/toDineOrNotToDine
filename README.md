@@ -1,5 +1,5 @@
 # About this App
-A API based app to randomly pick a restaurant from your location that returns restaurant info so that you have a easier time making a decision.
+A API based app to randomly pick a restaurant from your location that returns restaurant info so that you have a easier time making a decision. The user's geolocation is found by the I.P. address and the latitude & longitude is the key.
 This site was originally going to have Node & MongoDB running on backend but decided against it. (didnt need it)
 
 # Tech
