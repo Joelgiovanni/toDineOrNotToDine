@@ -7,7 +7,7 @@ This site was originally going to have Node & MongoDB running on backend but dec
 All restaurant info is retrieved from https://developers.zomato.com/
 
 # Live Demo 
-https://infinite-headland-16495.herokuapp.com/
+https://todineornot.herokuapp.com/
 
 # Screenshots
 <img width="1440" alt="Screen Shot 2019-06-04 at 10 32 43 PM" src="https://user-images.githubusercontent.com/35950568/58930761-1738ab00-871a-11e9-974a-d40ba5f21419.png">
